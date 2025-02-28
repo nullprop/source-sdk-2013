@@ -16661,7 +16661,7 @@ void CTFPlayer::ValidateCurrentObserverTarget( void )
 		if ( player->m_lifeState == LIFE_DEAD || player->m_lifeState == LIFE_DYING )
 		{
 			// if we are coaching, don't switch
-			if ( m_hStudent == m_hObserverTarget )
+			if ( m_hStudent.Get() == m_hObserverTarget.Get() )
 			{
 				return;
 			}
@@ -16694,7 +16694,7 @@ void CTFPlayer::ValidateCurrentObserverTarget( void )
 void CTFPlayer::CheckObserverSettings()
 {
 	// make sure we are always observing the student
-	if ( m_hObserverTarget && m_hStudent && m_hStudent != m_hObserverTarget )
+	if ( m_hObserverTarget && m_hStudent && m_hStudent.Get() != m_hObserverTarget.Get() )
 	{
 		SetObserverTarget( m_hStudent );
 	}
